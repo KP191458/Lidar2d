@@ -40,21 +40,6 @@ void loop() {
           Serial.print("\t Chip Temprature = ");
           Serial.print(temprature);
           Serial.println(" celcius degree"); //output chip temperature of Lidar
-
-          digitalWrite (4, HIGH);
-
-delayMicroseconds (800);
-
-digitalWrite (4, LOW);
-
-delayMicroseconds (800);
-digitalWrite (5, HIGH);
-
-delayMicroseconds (800);
-
-digitalWrite (5, LOW);
-
-delayMicroseconds (800);
         }
       }
     }
