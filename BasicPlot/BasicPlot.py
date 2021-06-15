@@ -16,8 +16,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.graphWidget = pg.PlotWidget()
         self.setCentralWidget(self.graphWidget)
 
-        self.x = list(range(800))  # 100 time points
-        self.y = [randint(0,100) for _ in range(800)]  # 100 data points
+        self.x = list(range(400))  # 100 time points
+        self.y = [randint(0,100) for _ in range(400)]  # 100 data points
 
         self.graphWidget.setBackground('w')
 
@@ -33,14 +33,19 @@ class MainWindow(QtWidgets.QMainWindow):
         m = [ser.readline(100).decode('utf-8')]
         n = m[0].split()
         print(n)
+        i = int(n[0])
         x_value = float(int(n[3])*math.sin(int(n[0])*math.pi/200.0)) #int(ser.readline(10).decode('utf-8'))
         y_value = float(int(n[3])*math.cos(int(n[0])*math.pi/200.0))
 
-        self.x = self.x[1:]  # Remove the first y element.
-        self.x.append(x_value)  # Add a new value 1 higher than the last.
+        #self.x = self.x[1:]  # Remove the first y element.
+        #self.x.append(x_value)  # Add a new value 1 higher than the last.
+        self.x.pop(i)
+        self.x.insert(i, x_value)
 
-        self.y = self.y[1:]  # Remove the first 
-        self.y.append(y_value)  # Add a new random value.
+        #self.y = self.y[1:]  # Remove the first 
+        #self.y.append(y_value)  # Add a new random value.
+        self.y.pop(i)
+        self.y.insert(i, y_value)
 
         self.data_line.setData(self.x, self.y)  # Update the data.
 
