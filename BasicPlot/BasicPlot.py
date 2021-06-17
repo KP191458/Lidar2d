@@ -40,7 +40,7 @@ class MainWindow(QtWidgets.QMainWindow):
         #self.x = self.x[1:]  # Remove the first y element.
         #self.x.append(x_value)  # Add a new value 1 higher than the last.
         self.x.pop(i)
-        self.x.insert(i, x_value)
+        self.x.insert(i, -x_value)
 
         #self.y = self.y[1:]  # Remove the first 
         #self.y.append(y_value)  # Add a new random value.
