@@ -1,0 +1,20 @@
+\section {Napotkane problemy}
+\subsection {Synchronizacja odczytu danych z dalmierza}
+Pierwotnym założeniem było ale ruch silnika krokowego był funkcją nadrzędną a odczyt odległości z dalmierza odbywał się tak jak nakazuje kod sterujący odbrotem silnika. W takiej implementacji ok 70 \% odczytów odległości dawała puste odczyty. Zastosowanie opóżnienia nie przynosiło poprawy. Prostym rozwiązaniem okazało się uzależnienie odrotu silnika od odczytu odległości - innymi słowy: dopiero gdy odczytaliśmy pomiar ogledłości z dalmierza nadawaliśmy do silnika sygnał przemieszczenia o kolejny krok (z zastosowaniem dla pewności niewielkiego opóźnienia).\\
+
+Najistotniejszym skutkiem uzależnienia przesówu silnika od odczytu dalmierza był brak możliwości dokładnego wysterowania prędkością obrotu silnika. Jedyna możliwość to zastosowanie dłuższego opóźnienia co skutkowało tym że czas wykonania pełnego odrotu urządzenia mogliśmy jedynie wydłużyć. 
+
+\subsection {Refleksyjne powierzchnie}
+Nawet lekki połysk powierzchni (np. kran czy lodówka) wprowadzały duże rozbierzności pomiędzy mierzoną a faktyczną odległością. W przypadku większego stopnia refleksyjności i nieregularnych krztałtów - jak np. wyżej wspomniany kran kuchenny - musiałem uciec się do prób okrycia jego powierzchni materiałami o nierefleksyjnej powierzchni.
+
+\subsection {Okna}
+Okna były kolejnym problematycznym elementem analizowanych pomieszczeń. Refleksyjna powierzchnia szyb dawała odczyty przekłamane w porównianiu z prawdziwą odległością. Co więcej elementy za oknem były niekiedy daleko poza zakresem w jakich pracuje dalmierz (12 metrów).\\
+
+Skutkiem istnienia okien w badanych pomieszczeniach był duże przekładania w odczytuwanych odległościach a co za tym idzie bardzo duże przekłamania w tworzonym obrazie. Prostym rozwiązaniem okazało się użycie zaluzji okiennych które dostępne były badanych pomieszczeniach. Pozwoliło to na wygenerowanie precyzyjnego obrazu wewnętrznego obrysu pomieszczenia.
+
+\subsection {Błędne odczyty dalmierza}
+Za na kilka tysięcy odczytów dalmierz pokazywał zupełnie błędną wartość - znacznie z poza zakresu. Pojawienie się takiej wielkości pogarszało znacznie kształt uzyskanego obrazu. Co więcej jeśli na obszarze rysowania mieliśmy włączone automatyczne skalowanie to wówczas wyskalowanie rysunku do rozmairu okna powodowało że prawidłowo rysowane pomieszsczenie było odzwierciedlane w zbyt małej skali.
+
+\subsection {Czas wykonania pełnego obrazu}
+Do wykonania pełnego obrazu potrzebowaliśmy 400 kroków. Ze względu na czas wykonania pojedynczego pomiaru przez dalmierz oraz przesunięcia pozycji silnika czas trwania wykonania pełnego obrazu był znacznie wyższy od profesjonalnych urządzeń pomiarowych tego typu.
+
