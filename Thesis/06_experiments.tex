@@ -1,5 +1,5 @@
 \section {Eksperymenty}
-\subsection {Experyment pierwszy: pomieszczenie codziennego użytku}
+\subsection {Eksperyment pierwszy: pomieszczenie codziennego użytku}
 Pierwszy z wykonanych eksperymentów polegał na wygenerowaniu obrazu pomieszczenia w którym pracowałem nad pisaną właśnie pracą dyplomową (salon z aneksem kuchennym).
 Pomieszczenie ma XX metrów kwadratowych i znajdują się w nim elementy codziennego użytku - lodówka, zlew kuchenny, kwiaty na parapecie oraz otwór dzwiowy łączcy pomieszczenie z przedpokojem. Wymiary pokoju to XX m x XX m.\\
 
@@ -21,7 +21,7 @@ Dla opisanego pomieszczenia wygenerowany został następujący obraz:
 
 W chwili generowania obrazu dalmierz znajdował się ok. 110 cm ponad powierzchnią podłogi, dzięki czemu nie znalazły się na nim stojące w pokoju umeblowanie.
 
-\subsection {Experyment pierwszy: analiza wygenerowanego obrazu}
+\subsection {Eksperyment pierwszy: analiza wygenerowanego obrazu}
 
 Wygenerowany obraz przedstawia dosyć wierne odwzorowanie badanego pomieszczenia. Ze względu na amatorski charakter urządzenia znalazło się w nim jednak kilka przekłamań:
 
@@ -43,7 +43,7 @@ Wygenerowany obraz przedstawia dosyć wierne odwzorowanie badanego pomieszczenia
 
 
 \newpage
-\subsection {Experyment drugi: ocena użytej rodzielczości}
+\subsection {Eksperyment drugi: ocena użytej rodzielczości}
 
 W drugim eksperymencie chciałem przekonać się o dokładności dalmierza i o tym czy zastosowana przez mnie rodzielczość (400 króków na pełen obrót) jest wystarczająca.\\
 
@@ -56,8 +56,23 @@ W tym celu wyłączyłem zasilanie silnika krokowego, przez co dalmierz zczytywa
     \label{fig:experiment_2_plot}
 \end{figure}
 
-\subsection {Experyment drugi: analiza wygenerowanego obrazu}
-
+\subsection {Eksperyment drugi: analiza wygenerowanego obrazu}
 Wahania odczytów dalmierza różniły się od siebie z reguły o 1-2 cm, czasem o 3 cm. Wartość ta mieści się w podawanym w specyfikacji producenta zakresie.\\
 
-Ilość wygenerowanych punktów (400) pozwoliła odzrować okrąd z bardzo dużą dokładnością. Krzywizna okręgu jest gładka a jej krztałt nie jest sprawia wrażenia widocznych pixeli (prostych linii wynikających ze zbyt rzadkiej siatki punktów). Nie ma potrzeby zwiększania rozdzielczości pracy urządzenia.\\
+Ilość wygenerowanych punktów (400) pozwoliła odwzorować okrąd z bardzo dużą dokładnością. Krzywizna okręgu jest gładka a jej krztałt nie jest sprawia wrażenia widocznych pixeli (prostych linii wynikających ze zbyt rzadkiej siatki punktów). Nie ma potrzeby zwiększania rozdzielczości pracy urządzenia.\\
+
+\newpage
+\subsection {Eksperyment trzeci: pomieszczenie z licznymi płaszczyznami}
+Pomieszczenie do kolejnego ekperymentu wybrane zostało ze względu na duże rozmary i liczne płaszczyzmy o różnym radzaju powierzchni (firanki, ekran telewizora, okna, lodówka, połyskująca poręcz, granitowe schody).
+
+\subsection {Eksperyment trzeci: analiza wygenerowanego obrazu}
+Wygenerowany obraz zawierał liczne drobne przekłamania:
+
+\begin{enumerate}
+    \item Brak żaluzji w oknach skutkował nierównomierną powierzchnią obrazu (duże wahania mierzonej odległości)
+    \item Klatka schodowa była widoczna na zarysie ale szczegóły były trudne do odczytania.
+    \item Połyskująca poręcz skutkowała znacznymi przekłamaniami w odczytanej powierzchni a co za tym idzie znaczne przekłamania na tym fragmencie obrazu.
+    \item Powierzchnia ekranu telewizora była silnie refleksujna co spowodowało przekłamania podobne do okiennych.
+    \item Falista powierzchnia firanek została odwzorowana.
+    \item Liczne zerowe odczyty. Pogarszały one obraz ale nie uniemożliwiały rozpoznania kształtu pomieszczenia.
+\end{enumerate}
