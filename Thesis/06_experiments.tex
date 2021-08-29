@@ -63,8 +63,17 @@ Ilość wygenerowanych punktów (400) pozwoliła odwzorować okrąd z bardzo du�
 
 \newpage
 \subsection {Eksperyment trzeci: pomieszczenie z licznymi płaszczyznami}
-Pomieszczenie do kolejnego ekperymentu wybrane zostało ze względu na duże rozmary i liczne płaszczyzmy o różnym radzaju powierzchni (firanki, ekran telewizora, okna, lodówka, połyskująca poręcz, granitowe schody).
+Pomieszczenie do kolejnego ekperymentu wybrane zostało ze względu na duże rozmary i liczne płaszczyzmy o różnym radzaju powierzchni (firanki, ekran telewizora, okna, lodówka, połyskująca poręcz, granitowe schody).\\
 
+Urządzenie pomiarowe ustawione zastało na wyspie kuchenne znajdujące się w przestrzeni pomiędzy cześcią kuchenną a salonową na wysokości ok. 130 cm od powierzchni podłogi. Pozwoliło to uniknąć odwzorowania na obrazie elementów wyposażenia jak stół kuchenny, pufy czy taborety.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{experiment_3_plot}
+    \caption{Wygenerowany obraz pomieszczenia o skomplikowanym kształcie}
+    \label{fig:experiment_3_plot}
+\end{figure}
+
+\newpage
 \subsection {Eksperyment trzeci: analiza wygenerowanego obrazu}
 Wygenerowany obraz zawierał liczne drobne przekłamania:
 
@@ -75,4 +84,27 @@ Wygenerowany obraz zawierał liczne drobne przekłamania:
     \item Powierzchnia ekranu telewizora była silnie refleksujna co spowodowało przekłamania podobne do okiennych.
     \item Falista powierzchnia firanek została odwzorowana.
     \item Liczne zerowe odczyty. Pogarszały one obraz ale nie uniemożliwiały rozpoznania kształtu pomieszczenia.
+\end{enumerate}
+
+\newpage
+\subsection {Eksperyment czwarty: pomieszczenie o prostym kształcie}
+Pomieszczenie do eksperymentu zostało wybrane ze względu na dużą ilość powierzchni płaskich, kąty proste, żaluzje okienne i relatywnie prosty kształt.\\
+
+Wygenerowany obraz był zaskakująco wiernym odzwierciedleniem badanego pomieszczenia:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{experiment_4_plot}
+    \caption{Wygenerowany obraz pomieszczenia o prostym kształcie}
+    \label{fig:experiment_4_plot}
+\end{figure}
+
+\subsection {Eksperyment czwarty: analiza wygenerowanego obrazu}
+Pomimo że wygenerowany obraz był zaskakująco wiernym odzwierciedleniem badanego pomieszczenia, znalazły się w nim nieliczne przekłamania.
+
+\begin{enumerate}
+    \item Zarówno gładkie płaszczyzny ścian i kąty proste zostały odwzorowane poprawnie z dużą dokładnością.
+    \item Żaluzje okienne umożliwiły rozwiązanie problemu odwzorowania okien.
+    \item Wnęki okienne były widoczne na wygenerowanym obrazie.
+    \item Powtórzył się problem zerowych odczytów dla niewielkich kątów dla ścian w bliskiej odległości.
+    \item Prawdopodobne zakłócenia spowodowane oświetleniem w tej części pokoju bądź elementami umieszczonymi na szafie pod ścianą.
 \end{enumerate}
