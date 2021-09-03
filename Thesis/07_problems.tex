@@ -18,3 +18,7 @@ Za na kilka tysięcy odczytów dalmierz pokazywał zupełnie błędną wartość
 \subsection {Czas wykonania pełnego obrazu}
 Do wykonania pełnego obrazu potrzebowaliśmy 400 kroków. Ze względu na czas wykonania pojedynczego pomiaru przez dalmierz oraz przesunięcia pozycji silnika czas trwania wykonania pełnego obrazu był znacznie wyższy od profesjonalnych urządzeń pomiarowych tego typu.
 
+\subsection {Brak układu współrzędnych dla płaszczyzny obrotu silnika}
+Tarcza obrotu silnika nie posiada układu współrzędnych - początkowego kąta obrotu. Korelacja pomiędzy początkowym kątem obrotu a porządanym miejscem w układzie współrzędnych na wygenerowanym obrazie musiała być ustawiona ręcznie. Włącznie zasilania silnika musiało zbiedz się z momentem w którym program rozpoczynał generowanie obrazu.\\
+
+Problem wynikał z natury urządzeń jakimi są silniki krokowe - każdy krok jest sterowany przez wygenerowanie przez sterownik różnicy potencjałów charaktrystyczną dla silnika i przemieszczenie jego części obrotowej o jeden krok. Istotą tych urządzeń jest właśnie obrót o krok (zgodnie lub przeciwnie do ruchu wskazówek zegara). Osoba korzystająca ze sterownika posługuje się głównie ilością i kierunkiem kroków a co za tym idzie urządzenia te nie zapewniają układu współrzędnych i przemieszczeń o zadane kąty.
