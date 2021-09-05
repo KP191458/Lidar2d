@@ -2,8 +2,39 @@
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
 \usepackage{color}
-\begin{document}
 
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=codestyle}
+
+\begin{document}
 \include{01_titlepage}
 \newpage
 \tableofcontents
@@ -12,10 +43,10 @@
 \include{02_introduction}
 \include{03_how_it_works}
 \include{04_hardware}
-
+\include{05_software}
 \include{06_experiments}
 \include{07_problems}
-\include{08_conclusions.tex}
+\include{08_conclusions}
 
 \begin{thebibliography}{10}
 \bibitem{lidar_en} \url{https://en.wikipedia.org/wiki/Lidar}
@@ -23,6 +54,7 @@
 \bibitem{mcmanamom} Paul McManamom "LiDAR Technologies and Systems" 2019
 \bibitem{dong} Dr. Pinliang Dong, Qi Chen "LiDAR Remote Sensing and Applications", CRC Press, 2018
 \bibitem{microstepping} \url{https://hackaday.com/2016/08/29/how-accurate-is-microstepping-really/}
+\bibitem{arduino} \url{https://pl.wikipedia.org/wiki/Arduino}
 \end{thebibliography}
 \listoffigures
 \end{document}

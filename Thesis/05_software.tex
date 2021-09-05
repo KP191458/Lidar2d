@@ -1,0 +1,106 @@
+\section {Implementacja programowa}
+
+\subsection {Użyte języki programowania i biblioteki}
+Implementacja składała się z dwóch programów: Pierwszy z nich został jezyk programowania dla mikrokontrolerów Arduino (oparty na środowisku Wiring i zasadniczo na języku C/C++ \cite{arduino}) i służył do odczytu danych z dalmierza i sterowania silnikiem. Drugi został napisany w języku Python w wersji 3.9.5. i służył do generowania obrazu z odczytanych wcześniej punktów.\\
+
+W programie napisanym w środowisku Arduino wykorzystaliśmy biblioteki:
+
+\begin{enumerate}
+    \item AccelStepper 1.61.0 - biblioteka do sterowania silnikiem.
+    \item TFMini 1.01 - bilioteka do odczytu danych z dalmierzy serii TF.
+\end{enumerate}
+
+Napisany w języku Python program do generowania obrazu z przekazanych punktów wykorzystywa naspeujące biblioteki:
+
+\begin{enumerate}
+    \item PyQt5
+    \item pyqtgraph
+    \item pyserial
+\end{enumerate}
+
+Dwie pierwsze to biblioteka Qt służąca do budowy interfejsów graficznych i jej moduł do wykresów. Ostatnia to biblioteka do odczytu danych z portów szeregowych Arduino.
+
+\subsection {Analiza wybranych fragmentów kodu}
+
+Poniżej analiza najważniejszych elementów kodu źrodłowego które złożyły się na implementacje od strony oprogramowania.\\
+
+\textbf{Odczyt danych z dalmierza}
+
+\begin{lstlisting}[language=C++, caption=Odczyt danych z dalmierza]
+    void loop() { 
+        if (Serial1.available()) {  //check if serial port has data input
+          if(Serial1.read() == HEADER) {  //assess data package frame header 0x59
+            uart[0]=HEADER;
+            if (Serial1.read() == HEADER) { //assess data package frame header 0x59
+              uart[1] = HEADER;
+              for (i = 2; i < 9; i++) { //save data in array
+                uart[i] = Serial1.read();
+              }
+              check = uart[0] + uart[1] + uart[2] + uart[3] + uart[4] + uart[5] + uart[6] + uart[7];
+              if (uart[8] == (check & 0xff)){ //verify the received data as per protocol
+                dist = uart[2] + uart[3] * 256;     //calculate distance value
+                strength = uart[4] + uart[5] * 256; //calculate signal strength value
+                temprature = uart[6] + uart[7] *256;//calculate chip temprature
+                temprature = temprature/8 - 256;
+                Serial.print(step);
+                Serial.print(" ");
+                Serial.print("dist = ");
+                Serial.print(dist); //output measure distance value of LiDAR
+                Serial.print('\t');
+                Serial.print("strength = ");
+                Serial.print(strength); //output signal strength value
+                Serial.print("\t Chip Temprature = ");
+                Serial.print(temprature);
+                Serial.println(" celcius degree"); //output chip temperature of Lidar
+                take_step();         
+              }
+            }
+          }
+        }
+      }
+\end{lstlisting}
+Powyższy kod jest kopią kodu z przykladów z biblioteki urządzeń TFMini. Kod działa w pętli ciągłej. Kod sprawdza odczytany na początku nagłówek z danych z portu. Jeśli nagłówek jest prawidłowy odczytane dalej wartość są umieszczane w tablicy typu int. Kolejnym krokiem jest konwersja odczytanych danych na porządane typy i przypisanie ich do zmiennych (zmienne oraz ich nazwy zostały zainicjowane wcześniej). Następnym krokiem jest wypisanie odczytanych danych na port wyjściowy urządzenia. Implementacja została uzupełniona o ostatni krok wywołanie funkcji take\_step() która obraca silnik krokowy o kolejny krok. Kod fukcji został opisany poniżej.\\
+
+\textbf{Przesunięcie osi silnika o kolejny krok}
+
+\begin{lstlisting}[language=C++, caption=Przesunięcie o kolejny krok]
+void take_step(){
+  if(dir==0)
+    step++;
+  else
+    step--;
+
+  if(step==0)
+    dir=0;
+  if(step==400)
+    dir=1;
+
+  myStepper.moveTo(step);
+  delay(100);
+  myStepper.run();
+}
+\end{lstlisting}
+Funkcja zawiera proste instrukcje warunkowe które sprawdzają który krok został ostatnio podjęty (według zainicjowanego globalnie licznika kroków) oraz kierunek przesuwu. Przesów silnika odbywa się za pomocą rekomendowanej dla silnika biblioteki. Funkcja ta umożliwiła optymalny - wahadłowy - ruch osi silnika.\\
+
+\textbf{Rysowanie punktów obrazu}
+
+\begin{lstlisting}[language=Python, caption=Rysowanie obrazu]
+    def update_plot_data(self):
+
+        m = [ser.readline(100).decode('utf-8')]
+        n = m[0].split()
+        print(n)
+        i = int(n[0])
+        x_value = float(int(n[3])*math.sin(int(n[0])*math.pi/200.0))
+        y_value = float(int(n[3])*math.cos(int(n[0])*math.pi/200.0))
+
+        self.x.pop(i)
+        self.x.insert(i, -x_value)
+
+        self.y.pop(i)
+        self.y.insert(i, y_value)
+
+        self.data_line.setData(self.x, self.y)  # Update the data.
+\end{lstlisting}
+
+Funkcja ta odczytuje dane z portu szeregowego Arduino (całe linijki tekstu) a następnie dane umieszcza w tablicy danych typu string (funkcja split()). Natępnie używamy z tej tabeli jedynie aktualnego kąt (w gradach) i odległości (odczytanej z dalmierza). Dane te umożliwiają wylicznie współrzędnych rysowanych punktów (x\_value i y\_value). Kolejno punkty te zostają wrzucone w odpowiednie miejsca w kontener pozostałych punktów a na koniec obraz zostaje ponownie wygenerowany w celu aktualizacji o odczytany punkt.
