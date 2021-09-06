@@ -1,24 +1,36 @@
 \section {Implementacja programowa}
 
 \subsection {Użyte języki programowania i biblioteki}
-Implementacja składała się z dwóch programów: Pierwszy z nich został jezyk programowania dla mikrokontrolerów Arduino (oparty na środowisku Wiring i zasadniczo na języku C/C++ \cite{arduino}) i służył do odczytu danych z dalmierza i sterowania silnikiem. Drugi został napisany w języku Python w wersji 3.9.5. i służył do generowania obrazu z odczytanych wcześniej punktów.\\
+Implementacja składała się z dwóch programów: Pierwszy z nich został napisany w jezyku programowania dla mikrokontrolerów Arduino (opartym na środowisku Wiring i zasadniczo na języku C/C++ \cite{arduino}) i służył do odczytu danych z dalmierza oraz sterowania silnikiem. Drugi został napisany w języku Python w wersji 3.9.5. i służył do generowania obrazu z odczytanych wcześniej punktów.\\
 
 W programie napisanym w środowisku Arduino wykorzystaliśmy biblioteki:
 
 \begin{enumerate}
-    \item AccelStepper 1.61.0 - biblioteka do sterowania silnikiem.
-    \item TFMini 1.01 - bilioteka do odczytu danych z dalmierzy serii TF.
+    \item \textbf{AccelStepper 1.61.0} - biblioteka do sterowania silnikiem.
+    \item \textbf{TFMini 1.01} - bilioteka do odczytu danych z dalmierzy serii TF.
 \end{enumerate}
 
-Napisany w języku Python program do generowania obrazu z przekazanych punktów wykorzystywa naspeujące biblioteki:
+Napisany w języku Python program do generowania obrazu z przekazanych punktów wykorzystuje następujące biblioteki:
 
 \begin{enumerate}
-    \item PyQt5
-    \item pyqtgraph
-    \item pyserial
+    \item \textbf{PyQt5}
+    \item \textbf{pyqtgraph}
+    \item \textbf{pyserial}
 \end{enumerate}
 
-Dwie pierwsze to biblioteka Qt służąca do budowy interfejsów graficznych i jej moduł do wykresów. Ostatnia to biblioteka do odczytu danych z portów szeregowych Arduino.
+Dwie pierwsze to biblioteka Qt służąca do budowy interfejsów graficznych i jej moduł do wykresów. Ostatnia to biblioteka do odczytu danych z portów szeregowych Arduino.\\
+
+W pierwotnej koncepcji oba programy miały być napisane w języku C++. Problemem okazało się nieprzystosowanie najpopularniejszych bibliotek (m.in. gnuplot) do pracy z dynamicznymi danymi. Kolejna koncepcja poddawała pod rozwagę użycie czysto obiektowych języków Java bądź C\#. Ze względu na dynamiczny charakter pracy urządzenia i istotną dla niego wysoką szybkość przesyłu danych z dalmierza istniało podejrzenie że Java może mieć problem z rysowaniem tak dużej ilości wykresów w tak któtkim czasie. Implementacje rysowania wykresów dynamicznych pod swoją powłoką rysowały dla nowych danych kolejny raz cały wykres i podmieniały wygenerowany rysunek.\\
+
+Optymalny okazał się język Python. Użyta biblioteka również rysowała za każdym razem cały wykres od nowa ale jej optymalizacja umożliwiała płynną obsługę napływających danych. Język Python ma również wbudowane funkcje parsowania tekstu i prostą obsługę tablic.
+
+\subsection {Podstawy prawne użytego oprogramowania}
+Arduino korzysta z licencji \textbf{LGPL} \cite{arduino_lic}, a użyte przeze mnie biblioteki
+AccelStepper z \textbf{GPL} \cite{accelstepper_lic} a TFMini z \textbf{Public Domain} \cite{tfmini_lic}.\\
+
+Python rozwijany jest jako projekt Open Source zarządzany przez Python Software Foundation, która jest organizacją non-profit. Jest udostępniony na licencji kompatybilnej z \textbf{GPL} \cite{python_lic}. PyQt5 jest na licencji \textbf{GPL v3.} \cite{pyqt5_lic}. PyQtGraph jest na licencji \textbf{MIT open-source license}. \cite{pyqtgraph_lic}\\
+
+Niniejsza praca nie jest wykorzystaniem komercyjnym więc żadna z licencji nie zastała naruszona.
 
 \subsection {Analiza wybranych fragmentów kodu}
 

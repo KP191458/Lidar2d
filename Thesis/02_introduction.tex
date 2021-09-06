@@ -33,8 +33,13 @@ Figure 1.2 LiDAR Conceptual diagram (adapted from Ref. 3) \cite{mcmanamom}.\\
     \label{fig:lidar_concept}
 \end{figure}
 
-
 Dr. Pinliang Dong w swojej książce "LiDAR Remote Sensing and Applications" prezentuje 
 wpływ zjawisk atmosferycznych na pomiary Lidaru \cite{dong}, jednak w mojej pracy pomiarów dokonywałem
 jedynie w pomieszczeniach zamkniętych (co z resztą sugerowała specyfikacja dalmierza TFmini
 Plus gdzie deklarowana przez producenta dokładność podana była dla pomieszczeń zamkniętych).\\
+
+\subsection {Cel pracy}
+Celem pracy jest zbudowanie działającej implementacji (zarówno sprzętowej jak i programowej) lidaru
+dwuwymiarowego za pomocą dalmierza laserowego oraz silnika krokowego. Te dwa urządzenia będą
+rdzeniem implementacji która za pośrednictwem mikrokontrolera będzie w stanie przekazać do komputera
+dane z których napisany przez nas program wygeneruje dwuwymiarowy obraz pomieszczenia.
