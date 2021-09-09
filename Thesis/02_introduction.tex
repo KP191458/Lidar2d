@@ -86,7 +86,7 @@ Mobilna i ulepszona wersja BLK360. Pozwala tworzyć modele całych budynków w c
     \label{fig:blk2fly}
 \end{figure}
 
-We wrześniu 2021 roku pojawił się oficjalny komunikat firmy Leica dotyczący kolejnego projektu - \textbf{BLK2FLY}. Urządzenie wykorzystuje drona i jest w pełni autonomiczne. Użytkownik, na urządzeniu mobilnym, wybiera jedynie porządany obiekt (np. cały budynek) a automatycznie sterowany drone samodzielnie dokonuje wszyskich zadanych pomiarów. Ogromna mobilność drona pozwala na pomiar trudno dostępnych dla człowieka miejsc.\\
+We wrześniu 2021 roku pojawił się oficjalny komunikat firmy Leica dotyczący kolejnego projektu - \textbf{BLK2FLY}. Urządzenie wykorzystuje drona i jest w pełni autonomiczne. Użytkownik, na urządzeniu mobilnym, wybiera jedynie porządany obiekt (np. cały budynek) a automatycznie sterowany dron samodzielnie dokonuje wszystkich zadanych pomiarów. Ogromna mobilność drona pozwala na pomiar trudno dostępnych dla człowieka miejsc.\\
 
 \textbf{BLK247}\\
 System monitoringu przemysłowego który prócz technologii Lidar wykorzystuje jeszcze obraz wideo i pomiar temperatury powierzchni.\\
@@ -107,5 +107,78 @@ Przewagę nad systemami monitoringu wykorzystującymi jedynie kamery jest taka �
 
 \newpage
 \subsubsection{Zastosowanie w kartografii}
-Jednym z pierwszych zastosowań lidarów było zastosowanie ich w kartografii. Dzisiaj zastosowanie to jest szeroko stosowane zarówno przez wojskowe agencje wywiadowcze jak i korporacje jak Google czy Apple dla swoich aplikacji służących do nawigacji w terenie.\\
+Jednym z pierwszych zastosowań lidarów było zastosowanie ich w kartografii. Dziś jest to technologia używana zarówno przez wojskowe agencje wywiadowcze jak i korporacje jak Google czy Apple w swoich aplikacjach służących do nawigacji w terenie.\\
 
+Rozróżniamy trzy podstawowe sposoby dokonywania pomiarów: lotniczy, mobilny i naziemny. Oba opisał dokładnie w swojej książce "Laser Scanning Systems in Highway and Safety Assessment" Biswajeet Pradhan \cite{pradhan}.\\
+
+\textbf{Pomiar lotniczy}\\
+Podstawą pomiaru lotniczego jest zarówno pomiar lidarowy jak i wykonanie wysokiej rozdzielczości zdjęć. Pozwala to nie tylko zbadać ukształtowanie terenu ale i odnieść pomiar do wykonanych zdjęć. Poniżej rysunek z książki Biswajeeta Pradhana
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.45]{lidar_lotniczy}
+    \caption{Dane z lidaru lotniczego \cite{pradhan}}
+    \label{fig:lidar_lotniczy}
+\end{figure}
+Te 3 zdjęcia to kolejno: pomiar z użyciem lidaru pokazujący w róznych kolorach wysokości względne mierzonych budynków, pomiar lidarowy gdzie odcieniami szarości przedstawione jest zagęszczenie obiektów, a trzecie to zdjęcie wysokiej rozdzielczości.\\
+
+\textbf{Pomiar mobilny}\\
+Jest obecnie bardzo powszechną metodą pomiarów. Lidar (wraz z systemem GPS, IMU i kamerami) dokonuje pomiarów z poziomu jeżdzącego ulicami pojazdu. Prócz trajektorii ulic lidar dokonuje jeszcze pomiaru budynków. Umożliwia to póżniejsze stworzenie trójwymiarowych map znanym m.in. z usługi Google Maps Street View (obecnie również w Apple Maps dla wybranych miast).\\
+
+Korzyścią takiego rodzaju pomiaru, w stosunku do pomiaru lotniczego, jest możliwość uchwycenia budynków z różnych jego stron. Pozwala to na stworzenie pełniejszego jego obrazu w trzech wymiarach. Wadą jest fakt że pomiarów dokonamy jedynie z wysokości poziomu drogi.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.45]{lidar_mobilny}
+    \caption{Schemat urządzenia mobilnego z ksiażki B.Pradhana \cite{pradhan}}
+    \label{fig:lidar_mobilny}
+\end{figure}
+
+\newpage
+\textbf{Pomiar naziemny}\\
+Stosowany jest w najczęściej w przypadku budynków. Lidar dokonuje wtedy bardzo dokładnego pomiaru stojąc statycznie w miejscu. Zaletą jest duża dokładność, możliwość wyboru zakresu analizy (patrz rysunek \ref{fig:lidar_naziemny}) oraz mozliwość zastosowania go w czasie rzeczywistym, rozpoznawania obiektów (w przypadku pomiaru mobilnego często odbywa się on na bazie już pomierzonych danych a nie w trakcie pomiarów).\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.45]{lidar_naziemny}
+    \caption{Przykłady sposobu pomiaru naziemnego z ksiażki B.Pradhana \cite{pradhan}}
+    \label{fig:lidar_naziemny}
+\end{figure}
+
+\textbf{Podsumowanie pomiarów kartograficznych}\\
+Każda z wymienionych wyżej metod ma swoje wady i zalety. Począwszy od kosztów (najdroższy lotniczy - najtańszy naziemny), przez zastosowanie (lotniczy to pomiar w wysokości - pozostałe tylko z poziomu powierzchni), gęstość pomiarów (lotniczy ma najniższą - naziemny i mobilny znacznie wyższą) czy szybkość dokonywanych pomiarów (lotniczy najszybszy - naziemny najwolniejszy). Wybór metody dyktują nam posiadane środki bądź charakter naszych pomiarów.
+
+\newpage
+\subsubsection{Zastosowanie militarne}
+Powszechnie znane jest również militarne zastosowanie lidarów. Prócz systemów rozpoznania ciekawymi zastosowaniami są n. wykrywanie min czy wizualizowanie zadrzewionego obszaru \cite{military}. Dodatkowo zaletą jest że lidary są obecnie niewielkich rozmiarów co pozwala wysyłać zarówno pojazdy bez załogowe czy drony  na tereny zagrożone i mogą one z powodzeniem tworzyć obraz otoczenia nawet w całkowitej ciemnośći.\\
+
+\subsubsection{Zastosowanie w geotechnice}
+Ze względu na statyczny charakter powierzchni geologicznych - skał, masywów ziemnych, jaskiń - lidar jest idealnym urządzeniem do tworzenia bardzo dokładnych map (zarówno dwu- jak i trójwymiarowych). Duża dokładność pomiarów pozwala rozpoznać fakturę skał czy np. wykryć powierzchnię wody. Dzięki przetwarzaniu obrazu wszystko to może zostać przedstawione w sposób czytelny dla człowieka. Poniżej kilka przykładów z ksiażki Dr. Donga \cite{dong}\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.66]{dong_1}
+    \caption{Przykłady dokładności w zależności od rozdzielczości lidaru \cite{dong}}
+    \label{fig:dong_1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.66]{dong_2}
+    \caption{Przykłady szczegółowego odwzorowania terenu \cite{dong}}
+    \label{fig:dong_2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.66]{dong_3}
+    \caption{Przykłady wyraźnie zarysowanej powierzchni wody \cite{dong}}
+    \label{fig:dong_3}
+\end{figure}
+
+\newpage
+\newpage
+\subsubsection{Podsumowanie zastosowań}
+Pomimo że moja praca ma czysto amatorski charakter i zajmuje się jedynie odtworzeniem podstaw działania techniki lidarowej, uważam że jest to bardzo istotna gałąź technologiczna.\\
+
+Sam fakt zastosowania w tak wielu dziedzinach jak architektura, transport, wywiad wojskowy, przemysł czy kartografia czyni z tej technologii istotny element konkurencji technologicznej.

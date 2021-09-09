@@ -1,6 +1,6 @@
 \section {Napotkane problemy}
 \subsection {Synchronizacja odczytu danych z dalmierza}
-Pierwotnym założeniem było ale ruch silnika krokowego był funkcją nadrzędną a odczyt odległości z dalmierza odbywał się tak jak nakazuje kod sterujący obrotem silnika. W takiej implementacji ok 70 \% odczytów odległości dawała puste odczyty. Zastosowanie opóżnienia nie przynosiło poprawy. Prostym rozwiązaniem okazało się uzależnienie obrotu silnika od odczytu odległości - innymi słowy: dopiero gdy odczytaliśmy pomiar ogledłości z dalmierza nadawaliśmy do silnika sygnał przemieszczenia o kolejny krok (z zastosowaniem dla pewności niewielkiego opóźnienia).\\
+Pierwotnym założeniem było aby ruch silnika krokowego był funkcją nadrzędną a odczyt odległości z dalmierza odbywał się tak jak nakazuje kod sterujący obrotem silnika. W takiej implementacji ok 70 \% odczytów odległości dawała puste odczyty. Zastosowanie opóżnienia nie przynosiło poprawy. Prostym rozwiązaniem okazało się uzależnienie obrotu silnika od odczytu odległości - innymi słowy: dopiero gdy odczytaliśmy pomiar ogledłości z dalmierza nadawaliśmy do silnika sygnał przemieszczenia o kolejny krok (z zastosowaniem dla pewności niewielkiego opóźnienia).\\
 
 Najistotniejszym skutkiem uzależnienia przesówu silnika od odczytu dalmierza był brak możliwości dokładnego wysterowania prędkością obrotu silnika. Jedyna możliwość to zastosowanie dłuższego opóźnienia co skutkowało tym że czas wykonania pełnego obrotu urządzenia mogliśmy jedynie wydłużyć. 
 
